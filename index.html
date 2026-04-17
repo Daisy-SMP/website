@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daisy SMP</title>
+
+    <link rel="icon" href="img/favicon.ico">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="/script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="img/logo.webp" alt="Daisy SMP Logo">
+            <h1>Daisy SMP</h1>
+        </div>
+
+        <nav>
+            <a href="#features">Features</a>
+            <a href="/modpack">Modpack Guide</a>
+
+            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
+                <svg viewBox="0 0 24 24" id="theme-icon">
+                    <path
+                        d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <div class="page-content">
+
+        <!-- HERO (re-styled to match new system) -->
+        <h1 class="page-title">Welcome to Daisy SMP</h1>
+        <p class="page-subtitle">
+            A relaxed survival multiplayer experience with voice chat, Origins, and up-to-date gameplay.
+        </p>
+
+        <div class="method-picker">
+
+            <a class="method-card" href="https://daisydc.macuguita.com" target="_blank">
+                <div class="badge badge-easy">Join</div>
+                <h3>Join the Server</h3>
+                <p>Jump straight into the world and start playing with others.</p>
+                <span class="arrow">→</span>
+            </a>
+
+            <a class="method-card" href="/modpack">
+                <div class="badge badge-advanced">Guide</div>
+                <h3>Modpack Setup</h3>
+                <p>Install everything you need with a step-by-step guide.</p>
+                <span class="arrow">→</span>
+            </a>
+
+        </div>
+
+        <!-- FEATURES -->
+        <div class="section" id="features">
+
+            <!-- MODS SECTION -->
+            <div class="section" id="mods">
+
+                <div class="section-header">
+                    <div class="section-icon icon-modrinth">🧩</div>
+                    <div class="section-header-text">
+                        <span class="badge badge-advanced">Mods</span>
+                        <h2>Core Modpack Mods</h2>
+                    </div>
+                </div>
+
+                <div class="method-picker">
+
+                    <!-- Voice Chat -->
+                    <a class="method-card" href="https://modrinth.com/mod/simple-voice-chat" target="_blank">
+                        <div class="badge badge-easy">Social</div>
+                        <h3>Simple Voice Chat</h3>
+                        <p>Proximity voice chat so you can talk to nearby players in-game.</p>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <!-- Origins -->
+                    <a class="method-card" href="https://modrinth.com/mod/origins-legacy" target="_blank">
+                        <div class="badge badge-advanced">Gameplay</div>
+                        <h3>Origins</h3>
+                        <p>Choose unique abilities and playstyles that change Minecraft completely.</p>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <!-- Unsup -->
+                    <a class="method-card" href="https://modrinth.com/mod/unsup" target="_blank">
+                        <div class="badge badge-easy">Utility</div>
+                        <h3>Unsup</h3>
+                        <p>Auto-updates the modpack every time you launch the game.</p>
+                        <span class="arrow">→</span>
+                    </a>
+
+                    <!-- Fabric (optional but nice) -->
+                    <a class="method-card" href="https://minecraft.net" target="_blank">
+                        <div class="badge badge-advanced">Core</div>
+                        <h3>Latest Minecraft version</h3>
+                        <p>We play on the latest minecraft version with access to all the new features unlike other servers.</p>
+                        <span class="arrow">→</span>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        © 2026 Daisy SMP — Not affiliated with Mojang
+    </footer>
+
+</body>
+
+</html>
