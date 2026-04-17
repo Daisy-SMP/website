@@ -76,14 +76,7 @@
                             channel in the DaisySMP Discord and download the <code>DaisySMP.zip</code> file pinned
                             there.</p>
                         <div class="screenshot">
-                            <div class="screenshot-placeholder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                                    <circle cx="8.5" cy="8.5" r="1.5" />
-                                    <path d="m21 15-5-5L5 21" />
-                                </svg>
-                                <span>Screenshot: #modpack channel in Discord</span>
-                            </div>
+                            <img src="img/discord_channel.webp" alt="Discord #modpack channel screenshot">
                         </div>
                     </div>
                 </div>
@@ -96,17 +89,11 @@
                             directly onto the Instances window. Prism will automatically import and set up the modpack
                             for you.</p>
                         <div class="screenshot">
-                            <div class="screenshot-placeholder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                                    <circle cx="8.5" cy="8.5" r="1.5" />
-                                    <path d="m21 15-5-5L5 21" />
-                                </svg>
-                                <span>Screenshot: Dragging zip into Prism Launcher</span>
-                            </div>
+                            <img src="img/dragging.gif" alt="Dragging the modpack to prism launcher">
                         </div>
                         <p class="note">💡 Once the import finishes, you're done! Click the instance and hit
-                            <strong>Launch</strong>.</p>
+                            <strong>Launch</strong>.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -182,6 +169,9 @@ icon=cW9pZgAAACYAAAAmBAAA/dz/AAAA/8MA3jX+1dS+uP3BCjUA3DUKKsMKNQDXNcEANSrFNQA1wQD
                         <h4>Rename the jar to <code>unsup.jar</code></h4>
                         <p>Find the downloaded jar file — it will be named something like <code>unsup-1.x.x.jar</code>.
                             Rename it to exactly <strong>unsup.jar</strong> (remove the version number).</p>
+                        <div class="screenshot">
+                            <img src="img/unsup_rename.gif" alt="Renaming unsup">
+                        </div>
                     </div>
                 </div>
 
@@ -191,14 +181,7 @@ icon=cW9pZgAAACYAAAAmBAAA/dz/AAAA/8MA3jX+1dS+uP3BCjUA3DUKKsMKNQDXNcEANSrFNQA1wQD
                         <h4>Create a new instance in Modrinth Launcher</h4>
                         <p>Open the Modrinth Launcher and click the <strong>Create new instance</strong> button.</p>
                         <div class="screenshot">
-                            <div class="screenshot-placeholder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                                    <circle cx="8.5" cy="8.5" r="1.5" />
-                                    <path d="m21 15-5-5L5 21" />
-                                </svg>
-                                <span>Screenshot: "Create new instance" button in Modrinth</span>
-                            </div>
+                            <img src="img/instance_modrinth.gif" alt="Making and instance in modrinth">
                         </div>
                     </div>
                 </div>
@@ -224,16 +207,10 @@ icon=cW9pZgAAACYAAAAmBAAA/dz/AAAA/8MA3jX+1dS+uP3BCjUA3DUKKsMKNQDXNcEANSrFNQA1wQD
                         <h4>Open the instance folder</h4>
                         <p>Click on your new instance in either the sidebar or the Library page. Then click the
                             <strong>⋯ three-dot menu</strong> at the top right of the window and select <strong>Open
-                                Folder</strong>.</p>
+                                Folder</strong>.
+                        </p>
                         <div class="screenshot">
-                            <div class="screenshot-placeholder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="3" y="3" width="18" height="18" rx="2" />
-                                    <circle cx="8.5" cy="8.5" r="1.5" />
-                                    <path d="m21 15-5-5L5 21" />
-                                </svg>
-                                <span>Screenshot: Three-dot menu → Open Folder</span>
-                            </div>
+                            <img src="img/folder_modrinth.gif" alt="Opening the instance's folder">
                         </div>
                     </div>
                 </div>
@@ -242,8 +219,9 @@ icon=cW9pZgAAACYAAAAmBAAA/dz/AAAA/8MA3jX+1dS+uP3BCjUA3DUKKsMKNQDXNcEANSrFNQA1wQD
                     <div class="step-num">7</div>
                     <div class="step-body">
                         <h4>Drop <code>unsup.jar</code> and <code>unsup.ini</code> into the folder</h4>
-                        <p>Drag both <strong>unsup.jar</strong> and <strong>unsup.ini</strong> into the instance folder
-                            that just opened. Then close the file explorer and go back to the Modrinth Launcher.</p>
+                        <p>Drag both <strong>unsup.jar</strong> and <strong>unsup.ini</strong> which you should have in
+                            your downloads folder into the instance folder that just opened. Then close the file
+                            explorer and go back to the Modrinth Launcher.</p>
                     </div>
                 </div>
 
@@ -261,6 +239,9 @@ icon=cW9pZgAAACYAAAAmBAAA/dz/AAAA/8MA3jX+1dS+uP3BCjUA3DUKKsMKNQDXNcEANSrFNQA1wQD
                                 <button class="copy-btn" onclick="copyArg()">Copy</button>
                             </div>
                             <pre id="java-arg">-javaagent:unsup.jar</pre>
+                        </div>
+                        <div class="screenshot">
+                            <img src="img/javaagent_modrinth.gif" alt="Adding the java agent to the instance">
                         </div>
                         <p style="margin-top: 10px;">Close the settings window when done.</p>
                     </div>
