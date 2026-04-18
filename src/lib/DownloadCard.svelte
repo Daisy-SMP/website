@@ -7,26 +7,27 @@
 
   let { icon, href, size }: Props = $props();
 
-  const name = href.split('/').pop()!;
+  const name = $derived(href.split("/").pop()!);
 
   let fetchedSize = $state<string | null>(null);
 
   $effect(() => {
     if (size) return;
 
-    fetch(href, { method: 'HEAD' })
-      .then(res => {
-        const bytes = Number(res.headers.get('content-length'));
+    fetch(href, { method: "HEAD" })
+      .then((res) => {
+        const bytes = Number(res.headers.get("content-length"));
         if (!bytes) return;
 
         if (bytes < 1024) fetchedSize = `${bytes} B`;
-        else if (bytes < 1024 * 1024) fetchedSize = `${(bytes / 1024).toFixed(1)} KB`;
+        else if (bytes < 1024 * 1024)
+          fetchedSize = `${(bytes / 1024).toFixed(1)} KB`;
         else fetchedSize = `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
       })
       .catch(() => null);
   });
 
-  const displaySize = $derived(size ?? fetchedSize ?? '...');
+  const displaySize = $derived(size ?? fetchedSize ?? "...");
 </script>
 
 <div class="download-card">
@@ -35,7 +36,7 @@
   </div>
   <div class="download-card-info">
     <div class="download-card-name">{name}</div>
-    <div class="download-card-size">{displaySize ?? '...'}</div>
+    <div class="download-card-size">{displaySize ?? "..."}</div>
   </div>
   <a class="download-card-btn" {href} download={name} title="Download">
     <img src="/img/download.svg" alt="Download" width="22" height="22" />
@@ -54,7 +55,7 @@
     margin-top: 14px;
   }
 
-  [data-theme="dark"] .download-card {
+  :global([data-theme="dark"]) .download-card {
     border-color: rgba(255, 255, 255, 0.12);
   }
 
@@ -98,7 +99,9 @@
     justify-content: center;
     flex-shrink: 0;
     text-decoration: none;
-    transition: opacity 0.2s, transform 0.1s;
+    transition:
+      opacity 0.2s,
+      transform 0.1s;
   }
 
   .download-card-btn:hover {
