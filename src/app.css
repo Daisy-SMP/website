@@ -62,6 +62,11 @@ header {
     font-weight: 700;
 }
 
+a.logo {
+  text-decoration: none;
+  color: var(--text);
+}
+
 nav {
     display: flex;
     align-items: center;
@@ -98,7 +103,7 @@ nav a:hover {
     fill: #000;
 }
 
-/* ── Page Layout ── */
+/* -- Page Layout -- */
 
 .page-content {
     flex: 1;
@@ -120,7 +125,7 @@ nav a:hover {
     margin-bottom: 48px;
 }
 
-/* ── Method Picker ── */
+/* -- Method Picker -- */
 
 .method-picker {
     display: grid;
@@ -195,7 +200,7 @@ nav a:hover {
     transform: translateX(4px);
 }
 
-/* ── Section ── */
+/* -- Section -- */
 
 .section {
     margin-bottom: 72px;
@@ -246,7 +251,7 @@ nav a:hover {
     font-weight: 700;
 }
 
-/* ── Steps ── */
+/* -- Steps -- */
 
 .steps {
     display: flex;
@@ -312,7 +317,7 @@ nav a:hover {
     opacity: 1;
 }
 
-/* ── Code Block ── */
+/* -- Code Block -- */
 
 .code-block {
     margin-top: 12px;
@@ -367,7 +372,7 @@ nav a:hover {
     overflow-x: auto;
 }
 
-/* ── Screenshot Placeholder ── */
+/* -- Screenshot Placeholder -- */
 
 .screenshot {
     margin-top: 14px;
@@ -409,7 +414,73 @@ nav a:hover {
     display: block;
 }
 
-/* ── Divider between sections ── */
+/* -- Download secrion -- */
+
+
+.download-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--card);
+    border-radius: 12px;
+    border: 2px dashed rgba(0, 0, 0, 0.15);
+    padding: 14px 16px;
+    margin-top: 14px;
+}
+
+[data-theme="dark"] .download-card {
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.download-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.download-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.download-card-name {
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.download-card-size {
+    font-size: 12px;
+    opacity: 0.5;
+    margin-top: 2px;
+}
+
+.download-card-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+.download-card-btn:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* -- Divider between sections -- */
 
 .section-divider {
     height: 2px;
@@ -418,7 +489,7 @@ nav a:hover {
     border-radius: 2px;
 }
 
-/* ── Done Banner ── */
+/* -- Done Banner -- */
 
 .done-banner {
     background: var(--accent);
@@ -447,7 +518,7 @@ nav a:hover {
     opacity: 0.9;
 }
 
-/* ── Footer ── */
+/* -- Footer -- */
 
 footer {
     text-align: center;
@@ -458,7 +529,7 @@ footer {
     margin-top: auto;
 }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 
 @media (max-width: 600px) {
     .page-content {
