@@ -2,6 +2,7 @@
   import MethodCard from "$lib/MethodCard.svelte";
   import Step from "$lib/Step.svelte";
   import Screenshot from "$lib/Screenshot.svelte";
+  import DownloadCard from "$lib/DownloadCard.svelte";
 
   let copied = $state(false);
 
@@ -54,28 +55,10 @@
     <div class="steps">
       <Step num={1} title="Download the modpack zip">
         <p>Click the download button to grab the modpack file.</p>
-        <div class="download-card">
-          <div class="download-card-icon">
-            <img src="/img/archive.svg" alt="" width="26" height="26" />
-          </div>
-          <div class="download-card-info">
-            <div class="download-card-name">DaisySMP.zip</div>
-            <div class="download-card-size">142 MB</div>
-          </div>
-          <a
-            class="download-card-btn"
-            href="/downloads/DaisySMP.zip"
-            download="DaisySMP.zip"
-            title="Download"
-          >
-            <img
-              src="/img/download.svg"
-              alt="Download"
-              width="22"
-              height="22"
-            />
-          </a>
-        </div>
+        <DownloadCard
+          icon="/img/archive.svg"
+          href="/downloads/DaisySMP.zip"
+        />
       </Step>
 
       <div class="step">
@@ -130,11 +113,12 @@
 
       <Step num={2} title="Download the unsup.ini config file">
         <p>
-          Download the configuration file <code>unsup.ini</code>
-          <a href="/resources/unsup.ini" download="unsup.ini">with this link</a> —
-          or you can copy the contents and paste them into a new text file, then save
-          it with that exact name.
+          Download the configuration file <code>unsup.ini</code>.
         </p>
+        <DownloadCard
+          icon="/img/text_file.svg"
+          href="/downloads/unsup.ini"
+        />
       </Step>
 
       <Step num={3} title="Rename the jar to unsup.jar"
