@@ -14,7 +14,7 @@
       devShells = forAllSystems (system:
         let
           pkgs = import nixpkgs { inherit system; };
-          mp42gif = (import ./mp42gif.nix { inherit pkgs; });
+          mp42gif = (import ./scripts/mp42gif.nix { inherit pkgs; });
         in
         {
           default = pkgs.mkShell {
