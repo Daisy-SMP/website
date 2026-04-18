@@ -3,6 +3,7 @@
   import Step from "$lib/Step.svelte";
   import Screenshot from "$lib/Screenshot.svelte";
   import DownloadCard from "$lib/DownloadCard.svelte";
+  import DoneBanner from "$lib/DoneBanner.svelte";
 
   let copied = $state(false);
 
@@ -12,6 +13,20 @@
       setTimeout(() => (copied = false), 1500);
     });
   }
+
+  let fabricVersion = $state<string | null>(null);
+
+  $effect(() => {
+    fetch(
+      "https://maven.fabricmc.net/net/fabricmc/fabric-loader/maven-metadata.xml",
+    )
+      .then((res) => res.text())
+      .then((xml) => {
+        const match = xml.match(/<release>(.*?)<\/release>/);
+        if (match) fabricVersion = match[1];
+      })
+      .catch(() => null);
+  });
 </script>
 
 <svelte:head>
@@ -75,15 +90,11 @@
             src="/img/dragging.gif"
             alt="Dragging the modpack to prism launcher"
           />
-          <p class="note">
-            💡 Once the import finishes, you're done! Click the instance and hit <strong
-              >Launch</strong
-            >.
-          </p>
         </Step>
       </div>
     </div>
   </div>
+  <DoneBanner></DoneBanner>
 
   <div class="section-divider"></div>
 
@@ -151,7 +162,7 @@
         </p>
         <p class="note">
           🧵 <strong>Loader:</strong> Fabric — latest version (currently
-          <strong>0.19.2</strong>)<br />
+          <strong>{fabricVersion ?? "loading..."}</strong>)<br />
           🎮 <strong>Minecraft version:</strong> <strong>26.1.2</strong>
         </p>
         <p style="margin-top:10px;">
@@ -162,7 +173,7 @@
       <Step num={6} title="Open the instance folder"
         ><p>
           Click on your new instance in either the sidebar or the Library page.
-          Then click the <strong>⋯ three-dot menu</strong> at the top right of
+          Then click the <strong>⋮ three-dot menu</strong> at the top right of
           the window and select <strong>Open Folder</strong>.
         </p>
         <Screenshot
@@ -204,17 +215,5 @@
     </div>
   </div>
 
-  <div class="done-banner">
-    <div class="done-icon">🎉</div>
-    <div>
-      <h3>You're all set!</h3>
-      <p>
-        Your instance is configured with unsup and will auto-update the modpack
-        every time you launch. Hit Play and join the server!
-      </p>
-    </div>
-  </div>
+  <DoneBanner></DoneBanner>
 </div>
-
-<style>
-</style>
