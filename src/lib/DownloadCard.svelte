@@ -2,26 +2,31 @@
   interface Props {
     icon: string;
     href: string;
+    size?: string;
   }
 
-  let { icon, href }: Props = $props();
+  let { icon, href, size }: Props = $props();
 
   const name = href.split('/').pop()!;
 
-  let fileSize = $state<string | null>(null);
+  let fetchedSize = $state<string | null>(null);
 
   $effect(() => {
+    if (size) return;
+
     fetch(href, { method: 'HEAD' })
       .then(res => {
         const bytes = Number(res.headers.get('content-length'));
         if (!bytes) return;
 
-        if (bytes < 1024) fileSize = `${bytes} B`;
-        else if (bytes < 1024 * 1024) fileSize = `${(bytes / 1024).toFixed(1)} KB`;
-        else fileSize = `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+        if (bytes < 1024) fetchedSize = `${bytes} B`;
+        else if (bytes < 1024 * 1024) fetchedSize = `${(bytes / 1024).toFixed(1)} KB`;
+        else fetchedSize = `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
       })
       .catch(() => null);
   });
+
+  const displaySize = $derived(size ?? fetchedSize ?? '...');
 </script>
 
 <div class="download-card">
@@ -30,7 +35,7 @@
   </div>
   <div class="download-card-info">
     <div class="download-card-name">{name}</div>
-    <div class="download-card-size">{fileSize ?? '...'}</div>
+    <div class="download-card-size">{displaySize ?? '...'}</div>
   </div>
   <a class="download-card-btn" {href} download={name} title="Download">
     <img src="/img/download.svg" alt="Download" width="22" height="22" />

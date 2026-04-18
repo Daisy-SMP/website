@@ -58,6 +58,7 @@
         <DownloadCard
           icon="/img/archive.svg"
           href="/downloads/DaisySMP.zip"
+          size="12KB"
         />
       </Step>
 
@@ -118,6 +119,7 @@
         <DownloadCard
           icon="/img/text_file.svg"
           href="/downloads/unsup.ini"
+          size="1.1KB"
         />
       </Step>
 
