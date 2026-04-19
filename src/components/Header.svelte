@@ -12,7 +12,12 @@
   }
 
   onMount(() => {
-    isDark = localStorage.getItem("theme") === "dark";
+    const saved = localStorage.getItem("theme");
+    if (saved) {
+      isDark = saved === "dark";
+    } else {
+      isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
     document.documentElement.setAttribute("data-theme", isDark ? "dark" : "");
 
     function onScroll() {

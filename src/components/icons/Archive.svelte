@@ -25,3 +25,9 @@
     d="M13 11l-1 0"
   /><path d="M11 13l-1 0" /><path d="M13 15l-1 0" /></svg
 >
+
+<style>
+    svg {
+        color: var(--text);
+    }
+</style>

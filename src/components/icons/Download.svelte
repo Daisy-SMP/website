@@ -24,6 +24,6 @@
 
 <style>
     svg {
-        color: black;
+        color: var(--text);
     }
 </style>
