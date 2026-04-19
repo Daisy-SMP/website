@@ -52,7 +52,7 @@
 
     <button
       class="theme-toggle mobile-theme"
-      on:click={toggleTheme}
+      onclick={toggleTheme}
       title="Toggle theme"
     >
       <img
@@ -65,19 +65,25 @@
   </nav>
 
   <!-- Mobile burger -->
-  <button class="burger" on:click={toggleMenu} aria-label="Menu"> ☰ </button>
+  <button class="burger" onclick={toggleMenu} aria-label="Menu"> ☰ </button>
 
   <!-- Mobile drawer -->
-  <div class="mobile-overlay" class:open={menuOpen} on:click={closeMenu}></div>
+  <button
+    class="mobile-overlay"
+    class:open={menuOpen}
+    onclick={closeMenu}
+    aria-label="Close menu"
+  >
+  </button>
 
   <aside class="mobile-menu" class:open={menuOpen}>
-    <a href="/" on:click={closeMenu}>Home</a>
-    <a href="/modpack" on:click={closeMenu}>Modpack Guide</a>
-    <a href="/origins" on:click={closeMenu}>Origins</a>
+    <a href="/" onclick={closeMenu}>Home</a>
+    <a href="/modpack" onclick={closeMenu}>Modpack Guide</a>
+    <a href="/origins" onclick={closeMenu}>Origins</a>
 
     <button
       class="theme-toggle mobile-theme"
-      on:click={toggleTheme}
+      onclick={toggleTheme}
       title="Toggle theme"
     >
       <img
@@ -175,6 +181,8 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
+    border: none;
+    padding: 0;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s;
