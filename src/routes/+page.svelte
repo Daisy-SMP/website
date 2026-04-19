@@ -50,7 +50,9 @@
   <div class="section" id="features">
     <div class="section" id="mods">
       <div class="section-header">
-        <div class="section-icon icon-modrinth"><PuzzlePiece width="1.5em" height="1.5em" /></div>
+        <div class="section-icon icon-modrinth">
+          <PuzzlePiece width="1.5em" height="1.5em" />
+        </div>
         <div class="section-header-text">
           <span class="badge badge-advanced">Mods</span>
           <h2>Core Modpack Mods</h2>

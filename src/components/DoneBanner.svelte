@@ -3,7 +3,7 @@
 </script>
 
 <div class="done-banner">
-  <div class="done-icon"><PartyPopper width="3.5em" height="3.5em"/></div>
+  <div class="done-icon"><PartyPopper width="3.5em" height="3.5em" /></div>
   <div>
     <h3>You're all set!</h3>
     <p>

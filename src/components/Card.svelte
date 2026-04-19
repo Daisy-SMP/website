@@ -7,16 +7,13 @@
     external?: boolean;
   }
 
-  let {
-    children,
-    href,
-    external = false,
-  }: Props = $props();
+  let { children, href, external = false }: Props = $props();
 </script>
 
 {#if href}
-  <a class="card"
-    href={href}
+  <a
+    class="card"
+    {href}
     target={external ? "_blank" : undefined}
     rel={external ? "noreferrer noopener" : undefined}
   >

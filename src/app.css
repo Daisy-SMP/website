@@ -1,9 +1,9 @@
 :root {
-  --bg: #F3ECDD;
-  --surface: #E6E0D4;
-  --primary: #EDC242;
-  --accent: #66AB32;
-  --dark-accent: #223A0B;
+  --bg: #f3ecdd;
+  --surface: #e6e0d4;
+  --primary: #edc242;
+  --accent: #66ab32;
+  --dark-accent: #223a0b;
   --text: #000000;
 
   --muted: rgba(0, 0, 0, 0.6);
@@ -27,7 +27,7 @@
   --space-7: 48px;
   --space-8: 64px;
 
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: "Inter", sans-serif;
 
   --text-xs: 12px;
   --text-sm: 14px;
@@ -44,7 +44,7 @@
 
 [data-theme="dark"] {
   --bg: #1e1e2f;
-  --surface: #1C1C2C;
+  --surface: #1c1c2c;
 
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.65);
@@ -59,13 +59,15 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -129,8 +131,12 @@ body {
   flex-shrink: 0;
 }
 
-.icon-prism { background: var(--accent); }
-.icon-modrinth { background: var(--primary); }
+.icon-prism {
+  background: var(--accent);
+}
+.icon-modrinth {
+  background: var(--primary);
+}
 
 .section-header-text .badge {
   font-size: 11px;

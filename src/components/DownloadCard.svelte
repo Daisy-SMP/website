@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import Download from "./icons/Download.svelte";
+  import Download from "$components/icons/Download.svelte";
 
   interface Props {
     icon: Snippet;

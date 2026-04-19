@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { initStepCounter } from '$lib/stepContext';
+  import { initStepCounter } from "$lib/stepContext";
   import "../app.css";
   import Header from "$components/Header.svelte";
   import Footer from "$components/Footer.svelte";

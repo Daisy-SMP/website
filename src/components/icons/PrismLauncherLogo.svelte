@@ -7,12 +7,7 @@
   let { width = "1em", height = "1em" }: Props = $props();
 </script>
 
-<svg
-  width={width}
-  height={height}
-  viewBox="0 0 48 48"
-  xmlns="http://www.w3.org/2000/svg"
->
+<svg {width} {height} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
   <g id="Group">
     <g id="g1">
       <path

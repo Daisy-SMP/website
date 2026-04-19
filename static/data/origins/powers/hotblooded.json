@@ -1,7 +1,4 @@
 {
   "type": "origins:effect_immunity",
-  "effects": [
-    "minecraft:poison",
-    "minecraft:hunger"
-  ]
+  "effects": ["minecraft:poison", "minecraft:hunger"]
 }

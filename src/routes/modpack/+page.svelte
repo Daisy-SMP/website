@@ -11,7 +11,7 @@
   import Archive from "$components/icons/Archive.svelte";
   import ConfigurationFile from "$components/icons/ConfigurationFile.svelte";
   import Minecraft from "$components/icons/Minecraft.svelte";
-    import Fabric from "$components/icons/Fabric.svelte";
+  import Fabric from "$components/icons/Fabric.svelte";
 
   let copied = $state(false);
 
@@ -62,7 +62,9 @@
   <!-- PRISM -->
   <div class="section" id="prism">
     <div class="section-header">
-      <div class="section-icon icon-prism"><PrismLauncherLogo width="1.25em" height="1.25em" /></div>
+      <div class="section-icon icon-prism">
+        <PrismLauncherLogo width="1.25em" height="1.25em" />
+      </div>
       <div class="section-header-text">
         <span class="badge badge-easy">Easiest</span>
         <h2>Prism Launcher</h2>
@@ -100,7 +102,9 @@
   <!-- MODRINTH -->
   <div class="section" id="modrinth">
     <div class="section-header">
-      <div class="section-icon icon-modrinth"><ModrinthLogo width="1.25em" height="1.25em" /></div>
+      <div class="section-icon icon-modrinth">
+        <ModrinthLogo width="1.25em" height="1.25em" />
+      </div>
       <div class="section-header-text">
         <span class="badge badge-advanced">Advanced</span>
         <h2>Modrinth Launcher</h2>
@@ -162,7 +166,8 @@
         <p class="note">
           <Fabric /> <strong>Loader:</strong> Fabric — latest version (currently
           <strong>{fabricVersion ?? "loading..."}</strong>)<br />
-          <Minecraft /> <strong>Minecraft version:</strong> <strong>26.1.2</strong>
+          <Minecraft /> <strong>Minecraft version:</strong>
+          <strong>26.1.2</strong>
         </p>
         <p style="margin-top:10px;">
           Hit <strong>Create</strong> to finish setting up the instance.

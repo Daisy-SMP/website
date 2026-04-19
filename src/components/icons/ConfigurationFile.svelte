@@ -8,8 +8,8 @@
 </script>
 
 <svg
-  width={width}
-  height={height}
+  {width}
+  {height}
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
@@ -29,7 +29,7 @@
 >
 
 <style>
-    svg {
-        color: var(--text);
-    }
+  svg {
+    color: var(--text);
+  }
 </style>

@@ -8,8 +8,8 @@
 </script>
 
 <svg
-  width={width}
-  height={height}
+  {width}
+  {height}
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"

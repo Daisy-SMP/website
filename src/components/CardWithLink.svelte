@@ -1,6 +1,6 @@
 <script lang="ts">
   import Star from "$components/icons/Star.svelte";
-  import RightArrow from "./icons/RightArrow.svelte";
+  import RightArrow from "$components/icons/RightArrow.svelte";
 
   interface Props {
     badge: string;
