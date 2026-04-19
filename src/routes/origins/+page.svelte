@@ -12,11 +12,16 @@
   <h1 class="page-title">Origins</h1>
   <p class="page-subtitle">The origins available on Daisy SMP.</p>
 
-  <div class="origins-grid">
-    {#each data.origins as origin}
-      <CardWithOrigin {origin} />
-    {/each}
-  </div>
+  {#await data.origins}
+    <p>Loading origins...</p>
+  {:then origins}
+    <div class="origins-grid">
+      {#each origins as origin}
+        <CardWithOrigin {origin} />
+      {/each}
+    </div>{:catch}
+    <p>Failed to load origins.</p>
+  {/await}
 </div>
 
 <style>

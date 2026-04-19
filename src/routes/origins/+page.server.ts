@@ -66,18 +66,16 @@ async function getLatestSha(): Promise<string> {
   return res.sha;
 }
 
-export async function load({ fetch: svelteKitFetch, setHeaders }) {
-  setHeaders({ "cache-control": "public, max-age=300" });
-
+async function loadOrigins(svelteKitFetch: typeof fetch): Promise<Origin[]> {
   if (cache && Date.now() - cache.timestamp < CACHE_TTL) {
-    return cache.data;
+    return cache.data.origins;
   }
 
   const latestSha = await getLatestSha();
 
   if (cache && cache.sha === latestSha) {
     cache.timestamp = Date.now();
-    return cache.data;
+    return cache.data.origins;
   }
 
   const tree = await fetchJsonWithGithubHeaders(
@@ -122,10 +120,8 @@ export async function load({ fetch: svelteKitFetch, setHeaders }) {
   function resolvePower(powerId: string): Power | null {
     const [powerNs, ...rest] = powerId.split(":");
     const key = rest.join(":");
-
     const name = langMerged[`power.${powerNs}.${key}.name`] ?? null;
     if (!name) return null;
-
     return {
       id: powerId,
       name,
@@ -196,12 +192,18 @@ export async function load({ fetch: svelteKitFetch, setHeaders }) {
     )
   ).filter((o): o is Origin => o !== null);
 
-  const result = {
-    origins: [...staticOrigins, ...githubOrigins].sort(
-      (a, b) => a.impact - b.impact,
-    ),
-  };
+  const origins = [...staticOrigins, ...githubOrigins].sort(
+    (a, b) => a.impact - b.impact,
+  );
 
-  cache = { data: result, timestamp: Date.now(), sha: latestSha };
-  return result;
+  cache = { data: { origins }, timestamp: Date.now(), sha: latestSha };
+  return origins;
+}
+
+export async function load({ fetch: svelteKitFetch, setHeaders }) {
+  setHeaders({ "cache-control": "public, max-age=300" });
+
+  return {
+    origins: loadOrigins(svelteKitFetch),
+  };
 }
