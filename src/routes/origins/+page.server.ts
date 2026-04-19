@@ -13,21 +13,28 @@ const githubHeaders = {
 };
 
 async function fetchJson(url: string) {
+  const res = await fetch(url, { headers: githubHeaders });
+
+  const text = await res.text();
+
+  if (!res.ok) {
+    console.error("[GitHub API error]", {
+      url,
+      status: res.status,
+      body: text
+    });
+
+    throw new Error(`GitHub fetch failed: ${res.status}`);
+  }
+
   try {
-    const res = await fetch(url, { headers: githubHeaders });
-
-    const text = await res.text();
-
-    console.log("GitHub status:", res.status);
-
-    if (!res.ok) {
-      console.error("GitHub response body:", text);
-      throw new Error(`GitHub error ${res.status}`);
-    }
-
     return JSON.parse(text);
   } catch (e) {
-    console.error("FETCH FAILED COMPLETELY:", e);
+    console.error("[GitHub JSON parse error]", {
+      url,
+      body: text
+    });
+
     throw e;
   }
 }
