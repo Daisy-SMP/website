@@ -1,6 +1,6 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
-  import { getStepCounter } from '$lib/stepContext';
+  import type { Snippet } from "svelte";
+  import { getStepCounter } from "$lib/stepContext";
 
   interface Props {
     title: string;
@@ -31,8 +31,7 @@
 <style>
   .step {
     display: flex;
-    gap: 20px;
-    align-items: flex-start;
+    gap: var(--space-5);
   }
 
   .step-num {
@@ -42,12 +41,10 @@
     background: var(--primary);
     color: #000;
     font-weight: 700;
-    font-size: 14px;
+    font-size: var(--text-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    margin-top: 2px;
   }
 
   .step-body {

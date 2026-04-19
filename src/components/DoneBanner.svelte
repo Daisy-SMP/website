@@ -1,10 +1,9 @@
 <script>
   import PartyPopper from "$components/icons/PartyPopper.svelte";
-
 </script>
 
 <div class="done-banner">
-  <div class="done-icon"><PartyPopper /></div>
+  <div class="done-icon"><PartyPopper width="3.5em" height="3.5em"/></div>
   <div>
     <h3>You're all set!</h3>
     <p>
@@ -18,27 +17,23 @@
   .done-banner {
     background: var(--accent);
     color: #fff;
-    border-radius: 16px;
-    padding: 28px;
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 40px;
-  }
-
-  .done-banner .done-icon {
-    font-size: 36px;
-    line-height: 1;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+    box-shadow: var(--shadow-md);
   }
 
   .done-banner h3 {
-    font-size: 18px;
+    font-size: var(--text-md);
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: var(--space-1);
   }
 
   .done-banner p {
-    font-size: 14px;
+    font-size: var(--text-sm);
     opacity: 0.9;
   }
 </style>

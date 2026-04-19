@@ -64,7 +64,7 @@
     top: 0;
     padding: 16px 40px;
     z-index: 100;
-    background: var(--dark-bg);
+    background: var(--surface);
     min-height: 64px;
     transition: transform 0.3s ease;
   }

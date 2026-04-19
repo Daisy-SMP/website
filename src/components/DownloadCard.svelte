@@ -39,10 +39,12 @@
       {@render icon()}
     {/if}
   </div>
+
   <div class="download-card-info">
     <div class="download-card-name">{name}</div>
     <div class="download-card-size">{displaySize ?? "..."}</div>
   </div>
+
   <a class="download-card-btn" {href} download={name} title="Download">
     <Download />
   </a>
@@ -52,27 +54,12 @@
   .download-card {
     display: flex;
     align-items: center;
-    gap: 14px;
-    background: var(--dark-bg);
-    border-radius: 12px;
-    border: 2px dashed rgba(0, 0, 0, 0.15);
-    padding: 14px 16px;
-    margin-top: 14px;
-  }
-
-  :global([data-theme="dark"]) .download-card {
-    border-color: rgba(255, 255, 255, 0.12);
-  }
-
-  .download-card-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    gap: var(--space-3);
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border);
+    padding: var(--space-4);
+    margin-top: var(--space-3);
   }
 
   .download-card-info {
@@ -80,37 +67,34 @@
     min-width: 0;
   }
 
+  .download-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .download-card-name {
-    font-size: 14px;
+    font-size: var(--text-sm);
     font-weight: 700;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   .download-card-size {
-    font-size: 12px;
-    opacity: 0.5;
-    margin-top: 2px;
+    font-size: var(--text-xs);
+    opacity: 0.6;
   }
 
   .download-card-btn {
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     background: var(--accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
     text-decoration: none;
-    transition:
-      opacity 0.2s,
-      transform 0.1s;
-  }
-
-  .download-card-btn:hover {
-    opacity: 0.85;
-    transform: translateY(-1px);
   }
 </style>

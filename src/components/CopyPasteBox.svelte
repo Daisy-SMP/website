@@ -28,54 +28,40 @@
 
 <style>
   .code-block {
-    margin-top: 12px;
-    background: rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
+    margin-top: var(--space-3);
+    background: var(--surface);
+    border-radius: var(--radius-md);
     overflow: hidden;
     font-family: "Space Mono", monospace;
-    font-size: 12px;
-  }
-
-  :global([data-theme="dark"]) .code-block {
-    background: rgba(255, 255, 255, 0.06);
+    font-size: var(--text-xs);
+    border: 1px solid var(--border);
   }
 
   .code-block-header {
-    padding: 8px 14px;
-    font-size: 11px;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    background: rgba(0, 0, 0, 0.06);
+    background: var(--bg);
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  :global([data-theme="dark"]) .code-block-header {
-    background: rgba(255, 255, 255, 0.04);
   }
 
   .copy-btn {
     background: var(--primary);
     border: none;
     padding: 3px 10px;
-    border-radius: 5px;
-    font-size: 11px;
+    border-radius: var(--radius-sm);
+    font-size: var(--text-xs);
     font-weight: 700;
     cursor: pointer;
     color: #000;
-    transition: opacity 0.2s;
-  }
-
-  .copy-btn:hover {
-    opacity: 0.8;
   }
 
   .code-block pre {
-    padding: 14px 16px;
-    white-space: pre-wrap;
-    word-break: break-all;
+    padding: var(--space-4);
     line-height: 1.6;
     overflow-x: auto;
   }

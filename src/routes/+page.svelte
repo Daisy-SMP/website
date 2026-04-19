@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import MethodCard from "$components/MethodCard.svelte";
+  import CardWithLink from "$components/CardWithLink.svelte";
   import PuzzlePiece from "$components/icons/PuzzlePiece.svelte";
 
   onMount(() => {
@@ -30,7 +30,7 @@
   </p>
 
   <div class="method-picker">
-    <MethodCard
+    <CardWithLink
       badge="Join"
       badgeType="easy"
       title="Join the Server"
@@ -38,7 +38,7 @@
       href="https://daisydc.macuguita.com"
       external
     />
-    <MethodCard
+    <CardWithLink
       badge="Guide"
       badgeType="advanced"
       title="Modpack Setup"
@@ -58,7 +58,7 @@
       </div>
 
       <div class="method-picker">
-        <MethodCard
+        <CardWithLink
           badge="Social"
           badgeType="easy"
           title="Simple Voice Chat"
@@ -66,7 +66,7 @@
           href="https://modrinth.com/mod/simple-voice-chat"
           external
         />
-        <MethodCard
+        <CardWithLink
           badge="Gameplay"
           badgeType="advanced"
           title="Origins"
@@ -74,7 +74,7 @@
           href="https://modrinth.com/mod/origins-legacy"
           external
         />
-        <MethodCard
+        <CardWithLink
           badge="Utility"
           badgeType="easy"
           title="Unsup"
@@ -82,7 +82,7 @@
           href="https://modrinth.com/mod/unsup"
           external
         />
-        <MethodCard
+        <CardWithLink
           badge="Core"
           badgeType="advanced"
           title="Latest Minecraft version"

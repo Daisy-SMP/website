@@ -1,6 +1,5 @@
 <script lang="ts">
   import Star from "$components/icons/Star.svelte";
-  import Card from "./Card.svelte";
   import RightArrow from "./icons/RightArrow.svelte";
 
   interface Props {
@@ -24,7 +23,7 @@
   }: Props = $props();
 </script>
 
-<Card {href} {external}>
+<a class="method-card" {href} target={external ? "_blank" : undefined}>
   <div class="badge badge-{badgeType}">
     {#if star}
       <Star />
@@ -34,42 +33,48 @@
   <h3>{title}</h3>
   <p>{description}</p>
   <span class="arrow"><RightArrow /></span>
-</Card>
+</a>
 
 <style>
   .method-card {
-    border-radius: 16px;
+    border-radius: var(--radius-lg);
     padding: 28px 24px;
     text-decoration: none;
     color: var(--text);
-    background: var(--dark-bg);
+    background: var(--surface);
     display: block;
-    border: 2px solid transparent;
-    transition:
-      transform 0.2s,
-      border-color 0.2s,
-      box-shadow 0.2s;
     position: relative;
     overflow: hidden;
+    border: 2px solid var(--border);
+    transition:
+      transform var(--speed-normal) var(--ease),
+      box-shadow var(--speed-normal) var(--ease),
+      border-color var(--speed-normal) var(--ease);
   }
 
   .method-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     border-color: var(--primary);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-md);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
   }
 
   .badge {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
-    font-size: 11px;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     padding: 3px 8px;
-    border-radius: 6px;
-    margin-bottom: 14px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-3);
   }
 
   .badge-easy {
@@ -83,26 +88,24 @@
   }
 
   h3 {
-    font-size: 20px;
+    font-size: var(--text-lg);
     font-weight: 700;
-    margin-bottom: 8px;
   }
 
   p {
-    font-size: 14px;
-    opacity: 0.7;
+    font-size: var(--text-sm);
     line-height: 1.6;
+    opacity: 0.75;
   }
 
   .arrow {
     position: absolute;
-    bottom: 20px;
-    right: 22px;
-    font-size: 20px;
+    bottom: var(--space-4);
+    right: var(--space-4);
     opacity: 0.4;
     transition:
-      opacity 0.2s,
-      transform 0.2s;
+      opacity var(--speed-normal),
+      transform var(--speed-normal);
   }
 
   .method-card:hover .arrow {

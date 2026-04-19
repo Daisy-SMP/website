@@ -3,21 +3,21 @@
 
   interface Props {
     children: Snippet;
-    href?: string | undefined;
+    href?: string;
     external?: boolean;
   }
 
   let {
     children,
-    href = undefined,
-    external = false
+    href,
+    external = false,
   }: Props = $props();
 </script>
 
 {#if href}
-  <a
-    class="card"
+  <a class="card"
     href={href}
+    target={external ? "_blank" : undefined}
     rel={external ? "noreferrer noopener" : undefined}
   >
     {@render children()}
@@ -30,24 +30,27 @@
 
 <style>
   .card {
-    border-radius: 16px;
-    padding: 28px 24px;
-    text-decoration: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-5);
+    background: var(--surface);
     color: var(--text);
-    background: var(--dark-bg);
     display: block;
-    border: 2px solid transparent;
+    border: 2px solid var(--border);
+
     transition:
-      transform 0.2s,
-      border-color 0.2s,
-      box-shadow 0.2s;
+      transform var(--speed-normal) var(--ease),
+      box-shadow var(--speed-normal) var(--ease),
+      border-color var(--speed-normal) var(--ease);
+
     position: relative;
     overflow: hidden;
+
+    box-shadow: var(--shadow-sm);
   }
 
   .card:hover {
     transform: translateY(-4px);
     border-color: var(--primary);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-md);
   }
 </style>

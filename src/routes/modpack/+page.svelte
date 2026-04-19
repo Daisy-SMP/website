@@ -1,5 +1,5 @@
 <script lang="ts">
-  import MethodCard from "$components/MethodCard.svelte";
+  import CardWithLink from "$components/CardWithLink.svelte";
   import Step from "$components/Step.svelte";
   import Screenshot from "$components/Screenshot.svelte";
   import DownloadCard from "$components/DownloadCard.svelte";
@@ -14,13 +14,6 @@
     import Fabric from "$components/icons/Fabric.svelte";
 
   let copied = $state(false);
-
-  function copyArg() {
-    navigator.clipboard.writeText("-javaagent:unsup.jar").then(() => {
-      copied = true;
-      setTimeout(() => (copied = false), 1500);
-    });
-  }
 
   let fabricVersion = $state<string | null>(null);
 
@@ -49,7 +42,7 @@
   </p>
 
   <div class="method-picker">
-    <MethodCard
+    <CardWithLink
       badge="Recommended"
       badgeType="easy"
       title="Prism Launcher"
@@ -57,7 +50,7 @@
       href="#prism"
       star
     />
-    <MethodCard
+    <CardWithLink
       badge="Advanced"
       badgeType="advanced"
       title="Modrinth Launcher"
