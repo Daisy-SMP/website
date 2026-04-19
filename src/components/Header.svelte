@@ -43,6 +43,7 @@
   <nav>
     <a href="/">Home</a>
     <a href="/modpack">Modpack Guide</a>
+    <a href="/origins">Origins</a>
     <button class="theme-toggle" onclick={toggleTheme} title="Toggle theme">
       <img
         src={isDark ? "/img/sun.svg" : "/img/moon.svg"}

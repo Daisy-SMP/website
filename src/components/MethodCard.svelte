@@ -1,6 +1,7 @@
 <script lang="ts">
   import Star from "$components/icons/Star.svelte";
-    import RightArrow from "./icons/RightArrow.svelte";
+  import Card from "./Card.svelte";
+  import RightArrow from "./icons/RightArrow.svelte";
 
   interface Props {
     badge: string;
@@ -23,17 +24,17 @@
   }: Props = $props();
 </script>
 
-<a class="method-card" {href} target={external ? "_blank" : undefined}>
+<Card {href} {external}>
   <div class="badge badge-{badgeType}">
     {#if star}
-    <Star />
+      <Star />
     {/if}
     {badge}
   </div>
   <h3>{title}</h3>
   <p>{description}</p>
   <span class="arrow"><RightArrow /></span>
-</a>
+</Card>
 
 <style>
   .method-card {
