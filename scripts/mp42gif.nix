@@ -1,3 +1,5 @@
+{ pkgs }:
+
 pkgs.writeShellScriptBin "mp42gif" ''
   VIDEO="$1"
   SPEED="''${2:-2}"
