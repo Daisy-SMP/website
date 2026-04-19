@@ -7,14 +7,29 @@ const RAW = `https://raw.githubusercontent.com/${REPO}/${BRANCH}`;
 const API = `https://api.github.com/repos/${REPO}`;
 
 const githubHeaders = {
-  Accept: "application/json",
-  Authorization: `Bearer ${GITHUB_TOKEN}`
+  Accept: "application/vnd.github+json",
+  Authorization: `Bearer ${GITHUB_TOKEN}`,
+  "User-Agent": "daisy-smp-cloudflare-worker"
 };
 
 async function fetchJson(url: string) {
-  const res = await fetch(url, { headers: githubHeaders });
-  if (!res.ok) throw new Error(`Failed to fetch ${url}`);
-  return res.json();
+  try {
+    const res = await fetch(url, { headers: githubHeaders });
+
+    const text = await res.text();
+
+    console.log("GitHub status:", res.status);
+
+    if (!res.ok) {
+      console.error("GitHub response body:", text);
+      throw new Error(`GitHub error ${res.status}`);
+    }
+
+    return JSON.parse(text);
+  } catch (e) {
+    console.error("FETCH FAILED COMPLETELY:", e);
+    throw e;
+  }
 }
 
 async function fetchRaw(path: string) {

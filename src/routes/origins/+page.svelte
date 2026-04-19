@@ -97,16 +97,6 @@
     gap: 16px;
   }
 
-  .origin-card {
-    background: var(--card);
-    border-radius: 16px;
-    padding: 24px;
-    border: 2px solid transparent;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
   .origin-header {
     display: flex;
     flex-direction: column;
