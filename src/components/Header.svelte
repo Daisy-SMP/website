@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
 
   let isDark = $state(false);
+  let visible = $state(true);
+  let lastY = $state(0);
 
   function toggleTheme() {
     isDark = !isDark;
@@ -12,10 +14,23 @@
   onMount(() => {
     isDark = localStorage.getItem("theme") === "dark";
     document.documentElement.setAttribute("data-theme", isDark ? "dark" : "");
+
+    function onScroll() {
+      const y = window.scrollY;
+      if (y < 64) {
+        visible = true;
+      } else {
+        visible = y < lastY;
+      }
+      lastY = y;
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   });
 </script>
 
-<header>
+<header class:hidden={!visible}>
   <a href="/" class="logo">
     <img src="/img/logo.webp" alt="Daisy SMP Logo" />
     <h1>Daisy SMP</h1>
@@ -36,13 +51,20 @@
 
 <style>
   header {
+    position: sticky;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    top: 0;
     padding: 16px 40px;
-    background: rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(10px);
+    z-index: 100;
+    background: var(--dark-bg);
     min-height: 64px;
+    transition: transform 0.3s ease;
+  }
+
+  header.hidden {
+    transform: translateY(-100%);
   }
 
   .logo {

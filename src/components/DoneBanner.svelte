@@ -1,5 +1,10 @@
+<script>
+  import PartyPopper from "$components/icons/PartyPopper.svelte";
+
+</script>
+
 <div class="done-banner">
-  <div class="done-icon">🎉</div>
+  <div class="done-icon"><PartyPopper /></div>
   <div>
     <h3>You're all set!</h3>
     <p>

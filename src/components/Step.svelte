@@ -1,13 +1,23 @@
 <script lang="ts">
   import type { Snippet } from 'svelte';
+  import { getStepCounter } from '$lib/stepContext';
 
   interface Props {
-    num: number;
     title: string;
     children: Snippet;
+    reset?: boolean;
   }
 
-  let { num, title, children }: Props = $props();
+  let { title, children, reset = false }: Props = $props();
+
+  const counter = getStepCounter();
+
+  let num = $state(0);
+
+  $effect.pre(() => {
+    if (reset) counter.reset();
+    num = counter.next();
+  });
 </script>
 
 <div class="step">

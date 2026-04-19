@@ -1,6 +1,9 @@
 <script lang="ts">
+  import type { Snippet } from "svelte";
+  import Download from "./icons/Download.svelte";
+
   interface Props {
-    icon: string;
+    icon: Snippet;
     href: string;
     size?: string;
   }
@@ -32,14 +35,16 @@
 
 <div class="download-card">
   <div class="download-card-icon">
-    <img src={icon} alt="" width="26" height="26" />
+    {#if icon}
+      {@render icon()}
+    {/if}
   </div>
   <div class="download-card-info">
     <div class="download-card-name">{name}</div>
     <div class="download-card-size">{displaySize ?? "..."}</div>
   </div>
   <a class="download-card-btn" {href} download={name} title="Download">
-    <img src="/img/download.svg" alt="Download" width="22" height="22" />
+    <Download />
   </a>
 </div>
 
@@ -48,7 +53,7 @@
     display: flex;
     align-items: center;
     gap: 14px;
-    background: var(--card);
+    background: var(--dark-bg);
     border-radius: 12px;
     border: 2px dashed rgba(0, 0, 0, 0.15);
     padding: 14px 16px;

@@ -1,33 +1,53 @@
 <script lang="ts">
+  import Star from "$components/icons/Star.svelte";
+    import RightArrow from "./icons/RightArrow.svelte";
+
   interface Props {
     badge: string;
-    badgeType?: 'easy' | 'advanced';
+    badgeType?: "easy" | "advanced";
     title: string;
     description: string;
     href: string;
     external?: boolean;
+    star?: boolean;
   }
 
-  let { badge, badgeType = 'easy', title, description, href, external = false }: Props = $props();
+  let {
+    badge,
+    badgeType = "easy",
+    title,
+    description,
+    href,
+    external = false,
+    star = false,
+  }: Props = $props();
 </script>
 
-<a class="method-card" {href} target={external ? '_blank' : undefined}>
-  <div class="badge badge-{badgeType}">{badge}</div>
+<a class="method-card" {href} target={external ? "_blank" : undefined}>
+  <div class="badge badge-{badgeType}">
+    {#if star}
+    <Star />
+    {/if}
+    {badge}
+  </div>
   <h3>{title}</h3>
   <p>{description}</p>
-  <span class="arrow">→</span>
+  <span class="arrow"><RightArrow /></span>
 </a>
 
 <style>
   .method-card {
-    background: var(--card);
     border-radius: 16px;
     padding: 28px 24px;
     text-decoration: none;
     color: var(--text);
+    background: var(--dark-bg);
     display: block;
     border: 2px solid transparent;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transition:
+      transform 0.2s,
+      border-color 0.2s,
+      box-shadow 0.2s;
     position: relative;
     overflow: hidden;
   }
@@ -39,7 +59,9 @@
   }
 
   .badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -77,7 +99,9 @@
     right: 22px;
     font-size: 20px;
     opacity: 0.4;
-    transition: opacity 0.2s, transform 0.2s;
+    transition:
+      opacity 0.2s,
+      transform 0.2s;
   }
 
   .method-card:hover .arrow {

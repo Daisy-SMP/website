@@ -1,9 +1,17 @@
 <script lang="ts">
-  import MethodCard from "$lib/MethodCard.svelte";
-  import Step from "$lib/Step.svelte";
-  import Screenshot from "$lib/Screenshot.svelte";
-  import DownloadCard from "$lib/DownloadCard.svelte";
-  import DoneBanner from "$lib/DoneBanner.svelte";
+  import MethodCard from "$components/MethodCard.svelte";
+  import Step from "$components/Step.svelte";
+  import Screenshot from "$components/Screenshot.svelte";
+  import DownloadCard from "$components/DownloadCard.svelte";
+  import DoneBanner from "$components/DoneBanner.svelte";
+  import CopyPasteBox from "$components/CopyPasteBox.svelte";
+  import Package from "$components/icons/Package.svelte";
+  import PrismLauncherLogo from "$components/icons/PrismLauncherLogo.svelte";
+  import ModrinthLogo from "$components/icons/ModrinthLogo.svelte";
+  import Archive from "$components/icons/Archive.svelte";
+  import ConfigurationFile from "$components/icons/ConfigurationFile.svelte";
+  import Minecraft from "$components/icons/Minecraft.svelte";
+    import Fabric from "$components/icons/Fabric.svelte";
 
   let copied = $state(false);
 
@@ -34,7 +42,7 @@
 </svelte:head>
 
 <div class="page-content">
-  <h1 class="page-title">📦 Install the Modpack</h1>
+  <h1 class="page-title"><Package /> Install the Modpack</h1>
   <p class="page-subtitle">
     Pick the method that works best for you. Both will get you in-game with the
     full modpack.
@@ -42,11 +50,12 @@
 
   <div class="method-picker">
     <MethodCard
-      badge="⭐ Recommended"
+      badge="Recommended"
       badgeType="easy"
       title="Prism Launcher"
       description="Easiest setup — just download a zip and drag it in. No manual steps."
       href="#prism"
+      star
     />
     <MethodCard
       badge="Advanced"
@@ -60,7 +69,7 @@
   <!-- PRISM -->
   <div class="section" id="prism">
     <div class="section-header">
-      <div class="section-icon icon-prism">🔷</div>
+      <div class="section-icon icon-prism"><PrismLauncherLogo width="1.25em" height="1.25em" /></div>
       <div class="section-header-text">
         <span class="badge badge-easy">Easiest</span>
         <h2>Prism Launcher</h2>
@@ -68,20 +77,17 @@
     </div>
 
     <div class="steps">
-      <Step num={1} title="Download the modpack zip">
+      <Step reset title="Download the modpack zip">
         <p>Click the download button to grab the modpack file.</p>
-        <DownloadCard
-          icon="/img/archive.svg"
-          href="/downloads/DaisySMP.zip"
-          size="12KB"
-        />
+        <DownloadCard href="/downloads/DaisySMP.zip" size="12KB">
+          {#snippet icon()}
+            <Archive width={26} height={26} />
+          {/snippet}
+        </DownloadCard>
       </Step>
 
       <div class="step">
-        <Step
-          num={2}
-          title="Drag the zip into Prism Launcher's Instances window"
-        >
+        <Step title="Drag the zip into Prism Launcher's Instances window">
           <p>
             Open Prism Launcher. Simply <strong>drag and drop</strong> the
             <code>DaisySMP.zip</code> file directly onto the Instances window.
@@ -94,14 +100,14 @@
       </div>
     </div>
   </div>
-  <DoneBanner></DoneBanner>
+  <DoneBanner />
 
   <div class="section-divider"></div>
 
   <!-- MODRINTH -->
   <div class="section" id="modrinth">
     <div class="section-header">
-      <div class="section-icon icon-modrinth">🟢</div>
+      <div class="section-icon icon-modrinth"><ModrinthLogo width="1.25em" height="1.25em" /></div>
       <div class="section-header-text">
         <span class="badge badge-advanced">Advanced</span>
         <h2>Modrinth Launcher</h2>
@@ -109,7 +115,7 @@
     </div>
 
     <div class="steps">
-      <Step num={1} title="Download unsup">
+      <Step reset title="Download unsup">
         <p>
           Download the <strong>unsup</strong> jar from the Modrinth
           <strong>website</strong>:
@@ -123,18 +129,18 @@
         />
       </Step>
 
-      <Step num={2} title="Download the unsup.ini config file">
+      <Step title="Download the unsup.ini config file">
         <p>
           Download the configuration file <code>unsup.ini</code>.
         </p>
-        <DownloadCard
-          icon="/img/text_file.svg"
-          href="/downloads/unsup.ini"
-          size="1.1KB"
-        />
+        <DownloadCard href="/downloads/unsup.ini" size="1.1 KB">
+          {#snippet icon()}
+            <ConfigurationFile width={26} height={26} />
+          {/snippet}
+        </DownloadCard>
       </Step>
 
-      <Step num={3} title="Rename the jar to unsup.jar"
+      <Step title="Rename the jar to unsup.jar"
         ><p>
           Find the downloaded jar file — it will be named something like <code
             >unsup-1.x.x.jar</code
@@ -143,7 +149,7 @@
         <Screenshot src="/img/unsup_rename.gif" alt="Renaming unsup" />
       </Step>
 
-      <Step num={4} title="Create a new instance in Modrinth Launcher"
+      <Step title="Create a new instance in Modrinth Launcher"
         ><p>
           Open the Modrinth Launcher and click the <strong
             >Create new instance</strong
@@ -155,22 +161,22 @@
         />
       </Step>
 
-      <Step num={5} title="Choose Custom Setup and name your instance"
+      <Step title="Choose Custom Setup and name your instance"
         ><p>
           Click <strong>Custom Setup</strong>. Name the instance
           <em>Daisy SMP</em> (or anything you like). Then set:
         </p>
         <p class="note">
-          🧵 <strong>Loader:</strong> Fabric — latest version (currently
+          <Fabric /> <strong>Loader:</strong> Fabric — latest version (currently
           <strong>{fabricVersion ?? "loading..."}</strong>)<br />
-          🎮 <strong>Minecraft version:</strong> <strong>26.1.2</strong>
+          <Minecraft /> <strong>Minecraft version:</strong> <strong>26.1.2</strong>
         </p>
         <p style="margin-top:10px;">
           Hit <strong>Create</strong> to finish setting up the instance.
         </p>
       </Step>
 
-      <Step num={6} title="Open the instance folder"
+      <Step title="Open the instance folder"
         ><p>
           Click on your new instance in either the sidebar or the Library page.
           Then click the <strong>⋮ three-dot menu</strong> at the top right of
@@ -182,7 +188,7 @@
         />
       </Step>
 
-      <Step num={7} title="Drop unsup.jar and unsup.ini into the folder"
+      <Step title="Drop unsup.jar and unsup.ini into the folder"
         ><p>
           Drag both <strong>unsup.jar</strong> and <strong>unsup.ini</strong> into
           the instance folder that just opened. Then close the file explorer and go
@@ -190,7 +196,7 @@
         </p>
       </Step>
 
-      <Step num={8} title="Add the Java agent argument"
+      <Step title="Add the Java agent argument"
         ><p>
           Click the <strong>⚙️ Settings cogwheel</strong> button at the top
           right of the instance window. In the settings panel that appears,
@@ -198,15 +204,7 @@
           <strong>Custom Java Arguments</strong>, then type or paste the
           following into the text box:
         </p>
-        <div class="code-block">
-          <div class="code-block-header">
-            <span>Java Argument</span>
-            <button class="copy-btn" onclick={copyArg}>
-              {copied ? "Copied!" : "Copy"}
-            </button>
-          </div>
-          <pre>-javaagent:unsup.jar</pre>
-        </div>
+        <CopyPasteBox title="Java Argument" text="-javaagent:unsup.jar" />
         <Screenshot
           src="/img/javaagent_modrinth.gif"
           alt="Adding the java agent to the instance"
@@ -215,5 +213,5 @@
     </div>
   </div>
 
-  <DoneBanner></DoneBanner>
+  <DoneBanner />
 </div>
