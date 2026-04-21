@@ -134,7 +134,8 @@ body {
 .icon-prism {
   background: var(--accent);
 }
-.icon-modrinth {
+.icon-modrinth,
+.icon-curseforge {
   background: var(--primary);
 }
 

@@ -12,6 +12,8 @@
   import ConfigurationFile from "$components/icons/ConfigurationFile.svelte";
   import Minecraft from "$components/icons/Minecraft.svelte";
   import Fabric from "$components/icons/Fabric.svelte";
+  import CurseforgeLogo from "$components/icons/CurseforgeLogo.svelte";
+  import Gear from "$components/icons/Gear.svelte";
 
   let copied = $state(false);
 
@@ -53,9 +55,16 @@
     <CardWithLink
       badge="Advanced"
       badgeType="advanced"
-      title="Modrinth Launcher"
+      title="Modrinth App"
       description="A bit more setup, but it is better than the default."
       href="#modrinth"
+    />
+    <CardWithLink
+      badge="Advanced"
+      badgeType="advanced"
+      title="CurseForge App"
+      description="A bit more setup, but it is better than the default."
+      href="#curseforge"
     />
   </div>
 
@@ -107,7 +116,7 @@
       </div>
       <div class="section-header-text">
         <span class="badge badge-advanced">Advanced</span>
-        <h2>Modrinth Launcher</h2>
+        <h2>Modrinth App</h2>
       </div>
     </div>
 
@@ -146,9 +155,9 @@
         <Screenshot src="/img/unsup_rename.gif" alt="Renaming unsup" />
       </Step>
 
-      <Step title="Create a new instance in Modrinth Launcher"
+      <Step title="Create a new instance in the Modrinth App"
         ><p>
-          Open the Modrinth Launcher and click the <strong
+          Open the Modrinth App and click the <strong
             >Create new instance</strong
           > button.
         </p>
@@ -190,14 +199,14 @@
         ><p>
           Drag both <strong>unsup.jar</strong> and <strong>unsup.ini</strong> into
           the instance folder that just opened. Then close the file explorer and go
-          back to the Modrinth Launcher.
+          back to the Modrinth App.
         </p>
       </Step>
 
       <Step title="Add the Java agent argument"
         ><p>
-          Click the <strong>⚙️ Settings cogwheel</strong> button at the top
-          right of the instance window. In the settings panel that appears,
+          Click the <strong><Gear /> Settings cogwheel</strong> button at the
+          top right of the instance window. In the settings panel that appears,
           click <strong>Java & Memory</strong> on the left side. Enable
           <strong>Custom Java Arguments</strong>, then type or paste the
           following into the text box:
@@ -205,6 +214,122 @@
         <CopyPasteBox title="Java Argument" text="-javaagent:unsup.jar" />
         <Screenshot
           src="/img/javaagent_modrinth.gif"
+          alt="Adding the java agent to the instance"
+        />
+      </Step>
+    </div>
+  </div>
+
+  <DoneBanner />
+
+  <div class="section-divider"></div>
+
+  <div class="section" id="curseforge">
+    <div class="section-header">
+      <div class="section-icon icon-curseforge">
+        <CurseforgeLogo width="1.25em" height="1.25em" />
+      </div>
+      <div class="section-header-text">
+        <span class="badge badge-advanced">Advanced</span>
+        <h2>CurseForge App</h2>
+      </div>
+    </div>
+
+    <div class="steps">
+      <Step reset title="Download unsup">
+        <p>
+          Download the <strong>unsup</strong> jar from the Modrinth
+          <strong>website</strong>:
+          <a href="https://modrinth.com/mod/unsup" target="_blank"
+            >modrinth.com/mod/unsup</a
+          >. Grab the latest version's <code>.jar</code> file.
+        </p>
+        <Screenshot
+          src="/img/download_unsup.gif"
+          alt="Downloading unsup from modrinth"
+        />
+      </Step>
+
+      <Step title="Download the unsup.ini config file">
+        <p>
+          Download the configuration file <code>unsup.ini</code>.
+        </p>
+        <DownloadCard href="/downloads/unsup.ini" size="1.1 KB">
+          {#snippet icon()}
+            <ConfigurationFile width={26} height={26} />
+          {/snippet}
+        </DownloadCard>
+      </Step>
+
+      <Step title="Rename the jar to unsup.jar"
+        ><p>
+          Find the downloaded jar file — it will be named something like <code
+            >unsup-1.x.x.jar</code
+          >. Rename it to exactly <strong>unsup.jar</strong> (remove the version number).
+        </p>
+        <Screenshot src="/img/unsup_rename.gif" alt="Renaming unsup" />
+      </Step>
+
+      <Step title="Create a new instance in the Modrinth App"
+        ><p>
+          Open the Modrinth App and click the <strong
+            >Create new instance</strong
+          > button.
+        </p>
+        <Screenshot
+          src="/img/instance_curseforge.gif"
+          alt="Making an instance in curseforge"
+        />
+      </Step>
+
+      <Step title="Choose Custom Setup and name your instance"
+        ><p>
+          Click <strong>Custom Setup</strong>. Name the instance
+          <em>Daisy SMP</em> (or anything you like). Then set:
+        </p>
+        <p class="note">
+          <Fabric /> <strong>Loader:</strong> Fabric — latest version (currently
+          <strong>{fabricVersion ?? "loading..."}</strong>)<br />
+          <Minecraft /> <strong>Minecraft version:</strong>
+          <strong>26.1.2</strong>
+        </p>
+        <p style="margin-top:10px;">
+          Hit <strong>Create</strong> to finish setting up the instance.
+        </p>
+      </Step>
+
+      <Step title="Open the instance folder"
+        ><p>
+          Click on your new instance in the minecraft main page. Then click the <strong
+            >⋮ three-dot menu</strong
+          >
+          at the top right of the instance window and select
+          <strong>Open Folder</strong>.
+        </p>
+        <Screenshot
+          src="/img/folder_curseforge.gif"
+          alt="Opening the instance's folder"
+        />
+      </Step>
+
+      <Step title="Drop unsup.jar and unsup.ini into the folder"
+        ><p>
+          Drag both <strong>unsup.jar</strong> and <strong>unsup.ini</strong> into
+          the instance folder that just opened. Then close the file explorer and go
+          back to the CurseForge App.
+        </p>
+      </Step>
+
+      <Step title="Add the Java agent argument"
+        ><p>
+          click the <strong>⋮ three-dot menu</strong> at the top right of the
+          instance window and select <strong>Profile Options</strong>. Scroll
+          all the way down until you see default additional arguments, then type
+          or paste the following into the text box:
+        </p>
+        <CopyPasteBox title="Java Argument" text="-javaagent:unsup.jar" />
+        <Screenshot
+          src="/img/javaagent_curseforge.gif"
           alt="Adding the java agent to the instance"
         />
       </Step>
