@@ -71,9 +71,9 @@
         <CardWithLink
           badge="Gameplay"
           badgeType="advanced"
-          title="Origins"
-          description="Choose unique abilities and playstyles that change Minecraft completely."
-          href="https://modrinth.com/mod/origins-legacy"
+          title="Create"
+          description="Make unique contraptions to aid you while playing the server."
+          href="https://modrinth.com/mod/create"
           external
         />
         <CardWithLink
@@ -87,9 +87,9 @@
         <CardWithLink
           badge="Core"
           badgeType="advanced"
-          title="Latest Minecraft version"
-          description="We play on the latest version with access to all the new features."
-          href="https://minecraft.net"
+          title="Create Aeronautics"
+          description="Make contraptions that will make your exploration journey easier."
+          href="https://modrinth.com/mod/create-aeronautics"
           external
         />
       </div>

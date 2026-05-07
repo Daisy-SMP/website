@@ -8,8 +8,8 @@
 </script>
 
 <img
-  src="/img/fabric.webp"
-  alt="Fabric loader's logo"
+  src="/img/neoforge.webp"
+  alt="Neoforge loader's logo"
   style:width={typeof width === "number" ? `${width}px` : width}
   style:height={typeof height === "number" ? `${height}px` : height}
 />

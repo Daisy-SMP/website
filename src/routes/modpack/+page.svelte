@@ -11,22 +11,40 @@
   import Archive from "$components/icons/Archive.svelte";
   import ConfigurationFile from "$components/icons/ConfigurationFile.svelte";
   import Minecraft from "$components/icons/Minecraft.svelte";
-  import Fabric from "$components/icons/Fabric.svelte";
+  // import Fabric from "$components/icons/Fabric.svelte";
+  import Neoforge from "$components/icons/Neoforge.svelte";
   import CurseforgeLogo from "$components/icons/CurseforgeLogo.svelte";
   import Gear from "$components/icons/Gear.svelte";
 
-  let copied = $state(false);
-
-  let fabricVersion = $state<string | null>(null);
+  let loaderVersion = $state<string | null>(null);
 
   $effect(() => {
     fetch(
-      "https://maven.fabricmc.net/net/fabricmc/fabric-loader/maven-metadata.xml",
+      "https://maven.neoforged.net/releases/net/neoforged/neoforge/maven-metadata.xml",
     )
       .then((res) => res.text())
       .then((xml) => {
-        const match = xml.match(/<release>(.*?)<\/release>/);
-        if (match) fabricVersion = match[1];
+        const versions = [...xml.matchAll(/<version>(.*?)<\/version>/g)].map(
+          (m) => m[1],
+        );
+
+        const matching = versions
+          .filter((v) => /^21\.1\.\d+$/.test(v))
+          .sort((a, b) => {
+            const pa = a.split(".").map(Number);
+            const pb = b.split(".").map(Number);
+
+            for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+              const diff = (pb[i] || 0) - (pa[i] || 0);
+              if (diff !== 0) return diff;
+            }
+
+            return 0;
+          });
+
+        if (matching.length > 0) {
+          loaderVersion = matching[0];
+        }
       })
       .catch(() => null);
   });
@@ -173,10 +191,11 @@
           <em>Daisy SMP</em> (or anything you like). Then set:
         </p>
         <p class="note">
-          <Fabric /> <strong>Loader:</strong> Fabric — latest version (currently
-          <strong>{fabricVersion ?? "loading..."}</strong>)<br />
+          <Neoforge /> <strong>Loader:</strong> Neoforge — latest version
+          (currently
+          <strong>{loaderVersion ?? "loading..."}</strong>)<br />
           <Minecraft /> <strong>Minecraft version:</strong>
-          <strong>26.1.2</strong>
+          <strong>1.21.1</strong>
         </p>
         <p style="margin-top:10px;">
           Hit <strong>Create</strong> to finish setting up the instance.
@@ -288,10 +307,11 @@
           <em>Daisy SMP</em> (or anything you like). Then set:
         </p>
         <p class="note">
-          <Fabric /> <strong>Loader:</strong> Fabric — latest version (currently
-          <strong>{fabricVersion ?? "loading..."}</strong>)<br />
+          <Neoforge /> <strong>Loader:</strong> Neoforge — latest version
+          (currently
+          <strong>{loaderVersion ?? "loading..."}</strong>)<br />
           <Minecraft /> <strong>Minecraft version:</strong>
-          <strong>26.1.2</strong>
+          <strong>1.21.1</strong>
         </p>
         <p style="margin-top:10px;">
           Hit <strong>Create</strong> to finish setting up the instance.

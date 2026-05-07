@@ -48,7 +48,7 @@
   <nav class="nav-desktop">
     <a href="/">Home</a>
     <a href="/modpack">Modpack Guide</a>
-    <a href="/origins">Origins</a>
+    <!-- <a href="/origins">Origins</a> -->
 
     <button
       class="theme-toggle mobile-theme"
