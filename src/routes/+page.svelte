@@ -85,7 +85,7 @@
           external
         />
         <CardWithLink
-          badge="Core"
+          badge="Gameplay"
           badgeType="advanced"
           title="Create Aeronautics"
           description="Make contraptions that will make your exploration journey easier."
