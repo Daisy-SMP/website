@@ -25,8 +25,8 @@
 <div class="page-content">
   <h1 class="page-title">Welcome to Daisy SMP</h1>
   <p class="page-subtitle">
-    A cozy survival multiplayer SMP with voice chat, Origins, and on the latest
-    version.
+    A cozy survival multiplayer SMP with voice chat, Create, and Create
+    Aeronautics.
   </p>
 
   <div class="method-picker">
